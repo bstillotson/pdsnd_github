@@ -105,7 +105,7 @@ def display_raw_data(df):
             data_request = input('Would you like to display the next 5 rows of data? yes/no:').lower()
             i +=5
         else:
-            data_request = input('Incorrect, please select yes/no:').lower()
+            data_request = input('Incorrect input, please select yes/no:').lower()
 
 def time_stats(df):
     """Displays statistics on the most frequent times of travel."""
