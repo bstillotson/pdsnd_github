@@ -17,17 +17,17 @@ def get_filters():
     """
     print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    
+
     while True:
       city = input('Please select one of the following cities; chicago, new york city, or washington:').lower()
       if city not in CITY_DATA:
-        print('Please select again from city list.')
+        print('Please select a city from the list.')
       else:
         break
-        
+
 
     # TO DO: get user input for month (all, january, february, ... , june)
-    
+
     while True:
       month = input("Please enter a month from january to june or select 'all'").lower()
       month_list = ['january','february','march','april','may','june']
@@ -37,7 +37,7 @@ def get_filters():
         break
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    
+
     while True:
       day = input("Please enter a day of the week (Monday to Sunday) or 'all' to select all days.").lower()
       day_list = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday']
@@ -64,39 +64,39 @@ def load_data(city, month, day):
 
     #Load data file into a dataframe
     df = pd.read_csv(CITY_DATA[city])
-    
+
     #convert Start time to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
-    
+
     #Pull out month and day of week from Start Time in new columns
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
-    
+
     #Filter by month (if needed)
     if month != 'all':
         month_index = ['january','february','march','april','may','june']
         month = month_index.index(month) + 1
-        
+
         #filter month for new dataframe
         df = df[df['month'] == month]
-        
-    #Filter day of week if needed    
-    if day != 'all': 
+
+    #Filter day of week if needed
+    if day != 'all':
         #filter by day of week for new dataframe
         df = df[df['day_of_week'] == day.title()]
-    
+
 
     return df
 
 def display_raw_data(df):
     # """Displays 5 rows of data if user wants information, continue displaying 5 rows as user as user continues to ask for information, and finally stop when user says no or no more data available"""
-    
-    
+
+
     #https://www.geeksforgeeks.org/pandas-set_option-function-in-python/ used this to help understand pulling multiple lines and maxing rows
     i = 0
     data_request = input('Would you like to display 5 rows of data? yes/no:').lower()
     pd.set_option("display.max_columns",None)
-    
+
     while True:
         if data_request == 'no':
             break
@@ -114,19 +114,19 @@ def time_stats(df):
     start_time = time.time()
 
     # TO DO: display the most common month
-    
+
     common_month = df['month'].mode()[0]
     print('Most common month is ', common_month)
 
     # TO DO: display the most common day of week
-    
+
     common_day = df['day_of_week'].mode()[0]
     print('Most common day is ', common_day)
 
     # TO DO: display the most common start hour
 
     df['hour'] = df['Start Time'].dt.hour
-    
+
     common_start_hour = df['hour'].mode()[0]
     print('Most common start hour is ', common_start_hour)
 
@@ -203,8 +203,8 @@ def user_stats(df):
         print('Newest Birth Year is ', newest_year)
         common_birth_year = int(df['Birth Year'].mode()[0])
         print('Most Common Birth Year is ', common_birth_year)
-        
-        
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -227,4 +227,3 @@ def main():
 
 if __name__ == "__main__":
 	main()
-
