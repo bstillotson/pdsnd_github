@@ -116,19 +116,19 @@ def time_stats(df):
     # TO DO: display the most common month
 
     common_month = df['month'].mode()[0]
-    print('Most common month is ', common_month)
+    print('The most common month is ', common_month)
 
     # TO DO: display the most common day of week
 
     common_day = df['day_of_week'].mode()[0]
-    print('Most common day is ', common_day)
+    print('The most common day is ', common_day)
 
     # TO DO: display the most common start hour
 
     df['hour'] = df['Start Time'].dt.hour
 
     common_start_hour = df['hour'].mode()[0]
-    print('Most common start hour is ', common_start_hour)
+    print('The most common start hour is ', common_start_hour)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -143,17 +143,17 @@ def station_stats(df):
     # TO DO: display most commonly used start station
 
     common_start_station = df['Start Station'].mode()[0]
-    print('Most common start station is ', common_start_station)
+    print('The most common start station is ', common_start_station)
 
     # TO DO: display most commonly used end station
 
     common_end_station = df['End Station'].mode()[0]
-    print('Most common end station is ', common_end_station)
+    print('The most common end station is ', common_end_station)
 
     # TO DO: display most frequent combination of start station and end station trip
 
     common_start_end_station = (df['Start Station'] + ', ' + df['End Station']).mode()[0]
-    print('Most common start-end station combination is ', common_start_end_station)
+    print('The most common start-end station combination is ', common_start_end_station)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -168,12 +168,12 @@ def trip_duration_stats(df):
     # TO DO: display total travel time
 
     total_travel = df['Trip Duration'].sum()
-    print('Total tavel time:', total_travel, ' seconds')
+    print('Total tavel time is:', total_travel, ' seconds')
 
     # TO DO: display mean travel time
 
     mean_travel = df['Trip Duration'].mean()
-    print('Average tavel time:', mean_travel, ' seconds')
+    print('Average tavel time is:', mean_travel, ' seconds')
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
@@ -198,11 +198,11 @@ def user_stats(df):
     # TO DO: Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         earliest_year = int(df['Birth Year'].min())
-        print('Earliest Birth Year is ', earliest_year)
+        print('The earliest Birth Year is ', earliest_year)
         newest_year = int(df['Birth Year'].max())
-        print('Newest Birth Year is ', newest_year)
+        print('The most recent Birth Year is ', newest_year)
         common_birth_year = int(df['Birth Year'].mode()[0])
-        print('Most Common Birth Year is ', common_birth_year)
+        print('The most common Birth Year is ', common_birth_year)
 
 
     print("\nThis took %s seconds." % (time.time() - start_time))
