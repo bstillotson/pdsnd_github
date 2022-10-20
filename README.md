@@ -4,10 +4,10 @@
 10/19/2022
 
 ### Project Title
-Replace the Project Title
+US Bikeshare Data
 
 ### Description
-Describe what your project is about and what it does
+File will provide details of different cities based on selection, indvidual records, and also statistics.
 
 ### Files used
 Include the files used
